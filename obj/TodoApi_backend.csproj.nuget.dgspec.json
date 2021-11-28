@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cxz12\\OneDrive\\桌面\\TodoApi_backend\\TodoApi_backend.csproj": {}
+    "D:\\TodoApi_backend\\TodoApi_backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cxz12\\OneDrive\\桌面\\TodoApi_backend\\TodoApi_backend.csproj": {
+    "D:\\TodoApi_backend\\TodoApi_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cxz12\\OneDrive\\桌面\\TodoApi_backend\\TodoApi_backend.csproj",
+        "projectUniqueName": "D:\\TodoApi_backend\\TodoApi_backend.csproj",
         "projectName": "TodoApi_backend",
-        "projectPath": "C:\\Users\\cxz12\\OneDrive\\桌面\\TodoApi_backend\\TodoApi_backend.csproj",
+        "projectPath": "D:\\TodoApi_backend\\TodoApi_backend.csproj",
         "packagesPath": "C:\\Users\\cxz12\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cxz12\\OneDrive\\桌面\\TodoApi_backend\\obj\\",
+        "outputPath": "D:\\TodoApi_backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cxz12\\AppData\\Roaming\\NuGet\\NuGet.Config",
