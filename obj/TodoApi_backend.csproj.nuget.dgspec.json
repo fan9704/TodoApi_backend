@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TodoApi_backend\\TodoApi_backend.csproj": {}
+    "C:\\TodoApi_backend\\TodoApi_backend.csproj": {}
   },
   "projects": {
-    "D:\\TodoApi_backend\\TodoApi_backend.csproj": {
+    "C:\\TodoApi_backend\\TodoApi_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TodoApi_backend\\TodoApi_backend.csproj",
+        "projectUniqueName": "C:\\TodoApi_backend\\TodoApi_backend.csproj",
         "projectName": "TodoApi_backend",
-        "projectPath": "D:\\TodoApi_backend\\TodoApi_backend.csproj",
+        "projectPath": "C:\\TodoApi_backend\\TodoApi_backend.csproj",
         "packagesPath": "C:\\Users\\cxz12\\.nuget\\packages\\",
-        "outputPath": "D:\\TodoApi_backend\\obj\\",
+        "outputPath": "C:\\TodoApi_backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cxz12\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,29 +40,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.12, )"
-            },
-            "Microsoft.EntityFrameworkCore.Analyzers": {
               "target": "Package",
               "version": "[5.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
-              "target": "Package",
-              "version": "[5.0.12, )"
-            },
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[5.0.12, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[5.0.12, )"
             },
@@ -75,10 +59,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.12, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[5.0.2, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",

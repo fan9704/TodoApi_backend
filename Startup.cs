@@ -1,19 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TodoApi_backend.Models;
-using Microsoft.EntityFrameworkCore;
 using TodoApi_backend.Data;
+using TodoApi_backend.Models;
 namespace TodoApi_backend
 {
     public class Startup
@@ -46,11 +39,18 @@ namespace TodoApi_backend
             services.AddControllers();
             string mySqlConnectionStr = Configuration.GetConnectionString("MySQL");
             services.AddDbContext<ProductContext>(options => options.UseMySql(mySqlConnectionStr, MySqlServerVersion.AutoDetect(mySqlConnectionStr), x => x.MigrationsAssembly("TodoApi_backend")));
-            services.AddDbContext<TodoContext>(options => options.UseMySql(mySqlConnectionStr, MySqlServerVersion.AutoDetect(mySqlConnectionStr), x => x.MigrationsAssembly("TodoApi_backend")));
+           services.AddDbContext<TodoContext>(options => options.UseMySql(mySqlConnectionStr, MySqlServerVersion.AutoDetect(mySqlConnectionStr), x => x.MigrationsAssembly("TodoApi_backend")));
+           services.AddDbContext<SellRecordContext>(options => options.UseMySql(mySqlConnectionStr, MySqlServerVersion.AutoDetect(mySqlConnectionStr), x => x.MigrationsAssembly("TodoApi_backend")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApi_backend", Version = "v1" });
             });
+        /*    services.AddDbContext<ProductContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
+            services.AddDbContext<TodoContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("TodoContext")));
+            services.AddDbContext<SellRecordContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SellRecordContext")));*/
 
 
         }

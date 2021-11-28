@@ -15,9 +15,7 @@ namespace TodoApi_backend.Models
         public int Quantity { get; set; }
        [Display(Name = "購買日期")]
         [DataType(DataType.Date)]
-        public DateTime PurchaseDate { get; set; }
-
-
+        public DateTime PurchaseDate { get; set; }//TODO 改成date
         [Display(Name = "銷售日期")]
         [DataType(DataType.Date)]
         public DateTime SellDate { get; set; }
