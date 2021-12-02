@@ -9,8 +9,8 @@ using TodoApi_backend.Data;
 namespace TodoApi_backend.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20211128124515_Updatedate")]
-    partial class Updatedate
+    [Migration("20211202103819_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

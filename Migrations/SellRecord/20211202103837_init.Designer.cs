@@ -8,8 +8,8 @@ using TodoApi_backend.Data;
 namespace TodoApi_backend.Migrations.SellRecord
 {
     [DbContext(typeof(SellRecordContext))]
-    [Migration("20211128120946_initSell")]
-    partial class initSell
+    [Migration("20211202103837_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
