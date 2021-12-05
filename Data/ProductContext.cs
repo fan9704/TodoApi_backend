@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TodoApi_backend.Models;
 
-namespace TodoApi_backend.Data
-{
-    public class ProductContext : DbContext
-    {
+namespace TodoApi_backend.Data {
+    public class ProductContext : DbContext {
         public ProductContext(DbContextOptions<ProductContext> options)
-            : base(options)
-        {
+            : base(options) {
         }
 
         public DbSet<Product> Product { get; set; }

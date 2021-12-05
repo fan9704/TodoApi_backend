@@ -1,12 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace TodoApi_backend.Models
-{
-    public class TodoContext : DbContext
-    {
+namespace TodoApi_backend.Models {
+    public class TodoContext : DbContext {
         public TodoContext(DbContextOptions<TodoContext> options)
-            : base(options)
-        {
+            : base(options) {
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }

@@ -1,9 +1,7 @@
 using System;
 
-namespace TodoApi_backend
-{
-    public class WeatherForecast
-    {
+namespace TodoApi_backend {
+    public class WeatherForecast {
         public DateTime Date { get; set; }
 
         public int TemperatureC { get; set; }
