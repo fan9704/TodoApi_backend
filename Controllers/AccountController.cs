@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoApi_backend.Data;
 using TodoApi_backend.Models;
-using System.Security.Cryptography;
+
 namespace TodoApi_backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class AccountController : ControllerBase
     {
         private readonly UserContext _context;
 
-        public UsersController(UserContext context)
+        public AccountController(UserContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/Account
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             return await _context.User.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/Account/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -42,7 +44,7 @@ namespace TodoApi_backend.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Account/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
@@ -72,35 +74,47 @@ namespace TodoApi_backend.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Users 
-        // Create User
-        [HttpPost]
+        /*
+        // POST: api/Account/Login
+        // TODO Login
+        [HttpPost("Login")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            var check = _context.User
-               .Where(u => u.Username == user.Username )
+            var checkuser = _context.User
+      .FromSqlRaw("SELECT * FROM User where username = {0}", user.Username)
+      .ToList();
+            Console.WriteLine(HttpContext.Response);
+           // _context.User.Add(user);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        }*/
+        [HttpPost("Login")]
+        public  IActionResult Login([FromBody] User user)
+        {
+            Console.WriteLine(user.Username);
+          var check = _context.User
+              .Where(u=> u.Username == user.Username && HMACSHA256(user.Password, "ASP.NET")== u.Password)
               .FirstOrDefault();
-            if (check == null)
-            {
-                user.Password = HMACSHA256(user.Password, "ASP.NET");
-                user.Superuser = false;
-                DateTime today = DateTime.Today;
-                user.RegisterDate = today.Date;
-                Console.WriteLine(HttpContext.Response.ToString());
-                _context.User.Add(user);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("GetUser", new { id = user.Id }, user);
+          if (check != null) {
+                HttpContext.Session.SetString("Login","Success");//add app in configure
+                HttpContext.Response.Cookies.Append("User", user.Username);
+                return Ok(true);
             }
-            else
-            {
-                return Ok("Repeat User");
-            }
-           
+          else
+          {
+                //return new JsonResult(true);
+              return Ok(false);
+          }
         }
-
-        // DELETE: api/Users/5
+        [HttpGet("Logout")]
+        public ActionResult Logout()
+        {
+           HttpContext.Session.Clear();
+            HttpContext.Response.Cookies.Delete("User");
+            return Ok("Logout Success");
+        }
+        // DELETE: api/Account/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
